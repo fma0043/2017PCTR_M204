@@ -68,7 +68,7 @@ public class Billiards extends JFrame {
 		public void actionPerformed(ActionEvent arg0) {
 			ExecutorService pool = Executors.newFixedThreadPool(N_BALL);
 			MoverBola thread;
-			ArrayList<MoverBola> threadList;
+			ArrayList<MoverBola> threadList = new ArrayList<MoverBola>();
 			for (int i = 0; i < N_BALL; i++) {
 				thread = new MoverBola(balls[i]);
 				pool.execute(thread);
