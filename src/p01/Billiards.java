@@ -68,13 +68,12 @@ public class Billiards extends JFrame {
 	private class StartListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			ExecutorService pool = Executors.newFixedThreadPool(N_BALL);
 			MoverBola thread;
 			board.setBalls(balls);
 			for (int i = 0; i < N_BALL; i++) {
-				thread = new MoverBola(balls[i]);
-				pool.execute(thread);
+				thread = new MoverBola(balls[i],board);
 				threadList.add(thread);
+				threadList.get(i).start();
 			}
 
 		}

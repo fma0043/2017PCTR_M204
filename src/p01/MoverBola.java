@@ -1,21 +1,30 @@
 package p01;
+
 /**
  * 
- * @author eduardo y felix
- * Clase auxiliar para poder mover y hacer que la bola rebote.
+ * @author eduardo y felix Clase auxiliar para poder mover y hacer que la bola
+ *         rebote.
  */
 public class MoverBola extends Thread {
 
 	private Board board;
 	private Ball ball;
-	
-	public MoverBola(Ball ball){
-		this.ball=ball;
+
+	public MoverBola(Ball ball, Board board) {
+		this.ball = ball;
+		this.board = board;
 	}
-	
+
 	public void run() {
-		this.ball.move();
-		this.ball.reflect();
-		board.repaint();
+		try {
+			while (true) {
+				this.ball.move();
+				this.ball.reflect();
+				board.repaint();
+				Thread.sleep(100);
+			}
+		} catch (InterruptedException a) {
+			return;
+		}
 	}
 }
