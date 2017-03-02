@@ -20,6 +20,7 @@ public class Billiards extends JFrame {
 
 	private Board board;
 
+	
 	private final int N_BALL = 7;
 	private Ball[] balls;
 
