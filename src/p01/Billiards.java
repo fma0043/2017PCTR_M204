@@ -9,6 +9,9 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @SuppressWarnings("serial")
 public class Billiards extends JFrame {
@@ -54,16 +57,23 @@ public class Billiards extends JFrame {
 	}
 
 	private void initBalls() {
-		
-		for(int i=0;i<N_BALL;i++){
-			balls[i]= new Ball();
+
+		for (int i = 0; i < N_BALL; i++) {
+			balls[i] = new Ball();
 		}
 	}
 
 	private class StartListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// TODO Code is executed when start button is pushed
+			ExecutorService pool = Executors.newFixedThreadPool(N_BALL);
+			MoverBola thread;
+			ArrayList<MoverBola> threadList;
+			for (int i = 0; i < N_BALL; i++) {
+				thread = new MoverBola(balls[i]);
+				pool.execute(thread);
+				threadList.add(thread);
+			}
 
 		}
 	}
@@ -72,7 +82,6 @@ public class Billiards extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Code is executed when stop button is pushed
-
 		}
 	}
 
