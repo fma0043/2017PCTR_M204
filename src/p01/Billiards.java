@@ -26,6 +26,8 @@ public class Billiards extends JFrame {
 	private final int N_BALL = 7;
 	private Ball[] balls = new Ball[N_BALL];
 	
+	ArrayList<MoverBola> threadList = new ArrayList<MoverBola>();
+	
 	public Billiards() {
 
 		board = new Board();
@@ -82,6 +84,9 @@ public class Billiards extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			// TODO Code is executed when stop button is pushed
+			for(int i=0;i<N_BALL;i++){
+				threadList.get(i).interrupt();
+			}
 		}
 	}
 
