@@ -4,7 +4,7 @@ package p01;
  * @author eduardo y felix
  * Clase auxiliar para poder mover y hacer que la bola rebote.
  */
-public class MoverBola implements Runnable {
+public class MoverBola extends Thread {
 
 	private Board board;
 	private Ball ball;
