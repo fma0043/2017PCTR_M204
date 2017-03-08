@@ -21,7 +21,7 @@ public class MoverBola extends Thread {
 				this.ball.move();
 				this.ball.reflect();
 				board.repaint();
-				Thread.sleep(100);
+				Thread.sleep(10);
 			}
 		} catch (InterruptedException a) {
 			return;
